@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="text-center">Đăng ký thông tin</h2>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="usr">Họ và Tên:</label>
+                <input required="true" type="text" class="form-control" id="usr">
+            </div>
+            <div class="form-group">
+                <label for="cmnd">Số CMND:</label>
+                <input required="true" type="number" class="form-control" id="cmnd">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Ngày Sinh:</label>
+                <input type="date" class="form-control" id="birthday">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input required="true" type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <input required="true" type="text" class="form-control" id="address">
+            </div>
+            <div class="form-group">
+                <label for="loaik">Loại Customer:</label>
+                <select id="loaik" class="form-control">
+                    <option>Diamond</option>
+                    <option>Platinum</option>
+                    <option>Gold</option>
+                    <option>Silver</option>
+                    <option>Member</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sale">Giảm Giá:</label>
+                <input required="true" type="number" class="form-control" id="sale">
+            </div>
+            <div class="form-group">
+                <label for="soluong">Số lượng đi kèm:</label>
+                <input required="true" type="number" class="form-control" id="soluong">
+            </div>
+            <div class="form-group">
+                <label for="rentDay">Số ngày thuê:</label>
+                <input required="true" type="number" class="form-control" id="rentDay">
+            </div>
+            <div class="form-group">
+                <label for="service">Loại dịch vụ:</label>
+                <select id="service" class="form-control">
+                    <option>Villa</option>
+                    <option>House</option>
+                    <option>Room</option>>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="room">Loại phòng:</label>
+                <select id="room" class="form-control">
+                    <option>Vip</option>
+                    <option>Business</option>
+                    <option>Normal</option>
+                </select>
+            </div>
+            <button class="btn btn-success" onclick="add()">Đồng ý</button>
+        </div>
+    </div>
+</div>
+<div>
+<script type="text/javascript">
+    function init() {
+        alert("Thông tin khách hàng")
+    }
+</script>
+</div>
+<div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Số thứ tự</th>
+        <th scope="col">Họ và tên</th>
+        <th scope="col">Số CMND</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Email</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Loại Customer</th>
+        <th scope="col">Giảm Giá ($)</th>
+        <th scope="col">Số lượng đi kèm</th>
+        <th scope="col">Số ngày thuê</th>
+        <th scope="col">Loại dịch vụ</th>
+        <th scope="col">Loại phòng</th>
+        <th scope="col">Giá tiền ($) </th>
+    </tr>
+    </thead>
+    <tbody id="dataList"></tbody>
+</table>
+</div>
+<script type="text/javascript">
+    var count =0;
+    function add() {
+        if (document.getElementById("cmnd").value.length !=9 ){
+            alert("Bạn đã nhập sai định dạng CMND. Mời bạn nhập lại.");
+        }
+        else if ((document.getElementById("soluong").value < 0) || (document.getElementById("rentDay").value) <0){
+            alert("Bạn đã nhập sai số lượng. Mời bạn nhập lại");
+        }
+        else {
+            count++;
+            var usr = document.getElementById("usr").value;
+            var cmnd = document.getElementById("cmnd").value;
+            var birthday = document.getElementById("birthday").value;
+            var email = document.getElementById("email").value;
+            var adress = document.getElementById("address").value;
+            var loaik = document.getElementById("loaik").value;
+            var sale = document.getElementById("sale").value;
+            var soluong = document.getElementById("soluong").value;
+            var rentDay = document.getElementById("rentDay").value;
+            var service = document.getElementById("service").value;
+            var room = document.getElementById("room").value;
+            var datalistTag = document.getElementById("dataList"), value;
+            var cost = 0;
+
+            if (document.getElementById("service").value == "Villa") {
+                cost = 500 * document.getElementById("rentDay").value * (1 - (document.getElementById("sale").value) / 100)
+            } else if (document.getElementById("service").value == "House") {
+                cost = 300 * document.getElementById("rentDay").value * (1 - (document.getElementById("sale").value) / 100)
+            } else {
+                cost = 100 * document.getElementById("rentDay").value * (1 - (document.getElementById("sale").value) / 100)
+            }
+            cost;
+            datalistTag.innerHTML += "<tr>" + "<td>" + count + "</td>" + "<td>" + usr + "</td>" + "<td>" + cmnd + "</td>"
+                + "<td>" + birthday + "</td>" + "<td>" + email + "</td>" + "<td>" + adress + "</td>" + "<td>" + loaik + "</td>" + "<td>" + sale + "</td>"
+                + "<td>" + soluong + "</td>" + "<td>" + rentDay + "</td>" + "<td>" + service + "</td>" + "<td>" + room + "</td>" + "<td>" + cost + "</td>"
+
+        }
+    }
+
+</script>
+</body>
+</html>

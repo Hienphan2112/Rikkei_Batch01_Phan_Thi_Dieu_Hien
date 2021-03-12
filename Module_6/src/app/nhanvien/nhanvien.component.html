@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: pink">
+​
+<div class="container">
+  <div align="center"><h2>Danh Sách Nhân Viên</h2></div><br>
+<!--  <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>-->
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Mã Nhân Viên</th>
+      <th>Họ Tên</th>
+      <th>Ngày Sinh</th>
+      <th>Vị Trí</th>
+      <th>Số Điện Thoại</th>
+      <th>Email</th>
+      <th>Địa Chỉ</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let nhanVien of Nhanvien">
+      <td>{{nhanVien.MaNhanVien}}</td>
+      <td>{{nhanVien.HoTenNhanVien}}</td>
+      <td>{{nhanVien.NgaySinh}}</td>
+      <td>{{nhanVien.ViTri}}</td>
+      <td>{{nhanVien.SoDienThoai}}</td>
+      <td>{{nhanVien.Email}}</td>
+      <td>{{nhanVien.DiaChi}}</td>
+      <td>
+        <button type="button" class="btn btn-primary">Thêm</button>
+        <button type="button" class="btn btn-success">Sửa</button>
+      <button type="button" class="btn btn-danger">Xóa</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+​
+</body>
+</html>
+
+
+
+<!--    <td>id: {{nhanvien.id}} </td>-->
+<!--    <td>Ho ten: {{nhanvien.HoTen}} </td>-->
+<!--    <td>Diem: {{nhanvien.Diem}} </td>-->
